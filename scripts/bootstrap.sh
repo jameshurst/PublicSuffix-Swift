@@ -1,0 +1,1 @@
+tools/mint bootstrap --verbose

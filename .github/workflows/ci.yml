@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Cache tools
+      id: cache-tools
+      uses: actions/cache@v2
+      with:
+        path: |
+          tools/.bin
+          tools/.mint
+        key: ${{ runner.os }}-${{ hashFiles('tools/mint') }}-${{ hashFiles('Mintfile') }}
+
+    - name: Run CI script
+      run: ./scripts/run_ci.sh
