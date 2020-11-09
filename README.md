@@ -8,8 +8,8 @@ A Swift package that uses the [Public Suffix List](https://publicsuffix.org) to 
  let components = SuffixList.default.parse("www.example.com")
  print(components?.tld) // com
  print(components?.sld) // example
- print(domainName?.domain) // example.com
- print(domainName?.subdomain) // www
+ print(components?.domain) // example.com
+ print(components?.subdomain) // www
  ```
 
 ## SuffixList
