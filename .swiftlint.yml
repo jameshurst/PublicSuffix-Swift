@@ -6,7 +6,14 @@ excluded:
   - Tests/LinuxMain.swift
   - Tests/PublicSuffixTests/XCTestManifests.swift
 
-# -- MASTER -- #
+line_length:
+  warning: 120
+
+number_separator:
+  minimum_length: 5
+
+trailing_comma:
+  mandatory_comma: true
 
 analyzer_rules:
   - unused_declaration
@@ -89,12 +96,3 @@ opt_in_rules:
   - vertical_whitespace_opening_braces
   - xct_specific_matcher
   - yoda_condition
-
-line_length:
-  warning: 120
-
-number_separator:
-  minimum_length: 5
-
-trailing_comma:
-  mandatory_comma: true

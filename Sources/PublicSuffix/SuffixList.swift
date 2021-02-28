@@ -4,12 +4,14 @@ import Foundation
 public struct SuffixList {
     private let rules: [String: [Rule]]
 
-    /// The default suffix list using bundled data.
-    public static let `default`: SuffixList = {
-        let url = Bundle.module.url(forResource: "public_suffix_list", withExtension: "dat")!
-        let list = (try? Data(contentsOf: url)).flatMap { String(data: $0, encoding: .utf8) } ?? ""
-        return SuffixList(string: list)
-    }()
+    #if !NO_BUNDLED
+        /// The default suffix list using bundled data.
+        public static let `default`: SuffixList = {
+            let url = Bundle.module.url(forResource: "public_suffix_list", withExtension: "dat")!
+            let list = (try? Data(contentsOf: url)).flatMap { String(data: $0, encoding: .utf8) } ?? ""
+            return SuffixList(string: list)
+        }()
+    #endif
 
     /// Initializes a new suffix list.
     ///
